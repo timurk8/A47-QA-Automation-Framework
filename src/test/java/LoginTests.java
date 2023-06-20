@@ -21,7 +21,7 @@ public class LoginTests extends BaseTest {
         String url = "https://qa.koel.app/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        System.out.println("TEST");
+        System.out.println("TEST111222");
         driver.quit();
     }
 }
