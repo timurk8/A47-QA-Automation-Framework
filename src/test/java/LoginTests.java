@@ -18,16 +18,9 @@ public class LoginTests extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //git branch homework-15
-        //git checkout homework-15
-
-        String url = "https://testpro.io/";
+        String url = "https://qa.koel.app/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        System.out.println("Changed the URL from 'https://qa.koel.app/' to 'https://testpro.io/'");
         driver.quit();
-
-        //  git commit -a -m "Changed the URL from 'https://qa.koel.app/' to 'https://testpro.io/'"
-
     }
 }
