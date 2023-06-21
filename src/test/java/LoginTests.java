@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
         System.out.println("Changed the URL from 'https://qa.koel.app/' to 'https://testpro.io/'");
         driver.quit();
 
-        // git commit -a
+        //  git commit -a -m "Changed the URL from 'https://qa.koel.app/' to 'https://testpro.io/'"
 
     }
 }
