@@ -115,9 +115,33 @@ public class BaseTest {
             String notificationText = "No notification: The song is already in the playlist";
             System.out.println(notificationText);
         }
+
     }
 
+    //Play song (Homework 18)
+    public static void playSong() {
+        //Click "Play next song"
+        String playNextButtonLocator = "//i[@data-testid='play-next-btn']";
+        WebElement playNextButtonElement = driver.findElement(By.xpath(playNextButtonLocator));
+        playNextButtonElement.click();
+        //Click "Play button"
+        String playButtonLocator = "//span[@data-testid='play-btn']";
+        WebElement playButtonElement = driver.findElement(By.xpath(playButtonLocator));
+        playButtonElement.click();
+    }
 
+    public static boolean isSoundBarDisplayed() {
+        WebElement soundBar = driver.findElement(By.cssSelector("div.bars"));
+        System.out.println("Sound bar is displayed - " + soundBar.isDisplayed());
+        return soundBar.isDisplayed();
+    }
+
+    public static boolean isPauseButtonDisplayed() {
+        //WebElement pauseButton = driver.findElement(By.xpath("//span[@data-testid='pause-btn']"));
+        WebElement pauseButton = driver.findElement(By.cssSelector("span[title='Pause']"));
+        System.out.println("Pause button is displayed - " + pauseButton.isDisplayed());
+        return pauseButton.isDisplayed();
+    }
 
 
 
