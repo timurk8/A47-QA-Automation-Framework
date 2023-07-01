@@ -1,15 +1,15 @@
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 
 public class Homework17Test extends BaseTest {
 
-    @Test
-    public static void addSongToPlaylist () throws InterruptedException {
-        // Open the URL for the web page on the Chrome browser
-        openLoginUrl();
+    @Test (dataProvider = "CorrectLoginProviders", dataProviderClass = BaseTest.class)
+    public static void addSongToPlaylist (String email, String password) throws InterruptedException {
 
         //Login Koel
-        loginKoel("bugbusters@testpro.io","te$t$tudent");
+        loginKoel(email,password);
         Thread.sleep(2000);
 
         //Search for a Song
@@ -18,23 +18,23 @@ public class Homework17Test extends BaseTest {
 
         //View all found songs
         viewAllButton();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Select the first Song found
         selectFirstFoundSong();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Add to Playlist - Button
         addToButton();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Add to Playlist
         addToPlaylist();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Notification
-        printNotificationText();
-        Thread.sleep(5000);
+        printNotificationText("No notification: The song is already in the playlist");
+        Thread.sleep(2000);
 
     }
 

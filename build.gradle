@@ -32,3 +32,9 @@ task Homework18Test(type: Test) {
         suites "src/test/resources/PlaySong.xml"
     }
 }
+
+task Homework19Test(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/PlaySong.xml"
+    }
+}
