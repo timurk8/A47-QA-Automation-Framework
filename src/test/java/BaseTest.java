@@ -155,6 +155,28 @@ public class BaseTest {
                 WebElement firstPlaylistElement = sidebarPlayLists.get(0);
                 firstPlaylistElement.click();
 
+                //2nd solution
+                //Find the sign - Playlist is empty
+                List<WebElement> emptyPLs = driver.findElements(By.xpath("//section[@id='playlistWrapper']//div[@class='screen-placeholder']//div//div[@class='text']"));
+                int countEmpty = emptyPLs.size();
+
+                WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Playlist']")));
+                deletePlaylist.click();
+
+                if (countEmpty !=0) {
+                    //Playlist is empty
+                    //WebElement deletePlaylist = driver.findElement(By.xpath("//button[normalize-space()='Playlist']"));
+                    System.out.println("The first playlist was empty and has been deleted");
+                }
+                else {
+                    //Playlist is NOT empty
+                    By xPlaylist = By.xpath("//button[normalize-space()='Ok']");
+                    WebElement okButton = wait.until(ExpectedConditions.visibilityOfElementLocated(xPlaylist));
+                    okButton.click();
+                    System.out.println("Ok button clicked and the first playlist has been deleted");
+                }
+/*
+                //1st solution --------
                 WebElement deletePlaylist = driver.findElement(By.xpath("//button[normalize-space()='Playlist']"));
                 deletePlaylist.click();
 
@@ -167,10 +189,11 @@ public class BaseTest {
                 }
                 else {
                     System.out.println("The first playlist was empty and has been deleted");
-//                    WebElement notificationMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
-//                    System.out.println(notificationMsg.getText());
+
                 }
 
+
+                -----1st solution */
 
             }
 
@@ -179,18 +202,18 @@ public class BaseTest {
     // 1) No: The song is already in the playlist
     // 2) Added 1 song into "The First Playlist."
     // 3) Created playlist "The First Playlist."
-    public static void printNotificationText(String noNotification) {
+    public static String printNotificationText(String noNotification) {
         List<WebElement> notificationElements = driver.findElements(By.cssSelector("div.success.show"));
-
+        String notificationText;
         if (!notificationElements.isEmpty()) {
             WebElement notificationElement = notificationElements.get(0);
-            String notificationText = notificationElement.getText();
+            notificationText = notificationElement.getText();
             System.out.println("The notification is: "+notificationText);
         } else {
-            String notificationText = noNotification;
+            notificationText = noNotification;
             System.out.println(notificationText);
         }
-
+        return notificationText;
     }
 
     //Get Notification

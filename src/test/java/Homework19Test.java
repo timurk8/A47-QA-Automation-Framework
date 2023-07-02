@@ -16,24 +16,16 @@ public class Homework19Test extends BaseTest {
         deleteFirstPlaylist();
         Thread.sleep(1500);
 
-
-        //Validate that a song is playing
-          //by verifying the sound bar
-        //Assert.assertTrue(isSoundBarDisplayed());
-
-          //by verifying the pause button
-        //Assert.assertTrue(isPauseButtonDisplayed());
-
-
         //Notification
+        String deletedPlaylistMsg = "Deleted playlist";
+        String createdPlaylistMsg = "Created playlist";
 
+        System.out.println(printNotificationText("The notification is: "));
 
-        //System.out.println("The notification is: "+getMsg());
-        printNotificationText("No notification: ");
         Thread.sleep(1000);
+        Assert.assertTrue(printNotificationText("").contains(deletedPlaylistMsg)||printNotificationText("").contains(createdPlaylistMsg));
 
-//        String deletedPlaylistMsg = "Deleted playlist";
-//        Assert.assertTrue(getMsg().contains(deletedPlaylistMsg));
+
 
 
 

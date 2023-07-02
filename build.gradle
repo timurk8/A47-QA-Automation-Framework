@@ -35,6 +35,6 @@ task Homework18Test(type: Test) {
 
 task Homework19Test(type: Test) {
     useTestNG() {
-        suites "src/test/resources/PlaySong.xml"
+        suites "src/test/resources/DeletePlayList.xml"
     }
 }
