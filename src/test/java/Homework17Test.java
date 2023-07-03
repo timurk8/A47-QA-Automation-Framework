@@ -22,19 +22,19 @@ public class Homework17Test extends BaseTest {
 
         //Select the first Song found
         selectFirstFoundSong();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         //Add to Playlist - Button
         addToButton();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         //Add to Playlist
         addToPlaylist();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         //Notification
         printNotificationText("No notification: The song is already in the playlist");
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
     }
 
