@@ -36,8 +36,6 @@ public class BaseTest {
         //options.addArguments("--window-position=0,0");
         options.addArguments("--start-maximized");
 
-
-
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -53,7 +51,6 @@ public class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
-
 
     @DataProvider(name = "IncorrectLoginProviders")
     public static Object[][] getDataFromDataProviders() {
@@ -130,7 +127,6 @@ public class BaseTest {
             playlistElement.sendKeys("The First Playlist");
             WebElement savePlaylistButton = driver.findElement(By.cssSelector("#songResultsWrapper > header > div.song-list-controls > div > section.new-playlist > form > button"));
             savePlaylistButton.click();
-
         } else {
             // Add to the first playlist
             WebElement playlistElement = playlistElements.get(0);
@@ -138,45 +134,25 @@ public class BaseTest {
             //playlistElement.click();
         }
     }
+
         //Delete the first playlist if exists (HW-19, HW-20)
         protected static void deleteFirstPlaylist()  {
             List<WebElement> sidebarPlayLists = driver.findElements(By.xpath("//section[@id='playlists']/ul/li[3]"));
 
             //int countPL = sidebarPlaylists.size();
             if (sidebarPlayLists.isEmpty()) {
-                // Create a Playlist
+                // Create the first Playlist
                 String namePlaylist = "The First Playlist";
                 createPlaylistSidebar(namePlaylist);
                 System.out.println("No playlists. We created " + namePlaylist + ". Try to delete now");
-
             } else {
                 // Delete the first playlist
                 WebElement firstPlaylistElement = sidebarPlayLists.get(0);
                 firstPlaylistElement.click();
-
-                //Find the sign - Playlist is empty
-                List<WebElement> emptyPLs = driver.findElements(By.xpath("//section[@id='playlistWrapper']//div[@class='screen-placeholder']//div//div[@class='text']"));
-                int countEmpty = emptyPLs.size();
-
-                WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Playlist']")));
-                deletePlaylist.click();
-
-                if (countEmpty !=0) {
-                    //Playlist is empty
-                    System.out.println("The first playlist was empty and has been deleted");
-                }
-                else {
-                    //Playlist is NOT empty
-                    By xPlaylist = By.xpath("//button[normalize-space()='Ok']");
-                    WebElement okButton = wait.until(ExpectedConditions.visibilityOfElementLocated(xPlaylist));
-                    okButton.click();
-                    System.out.println("Ok button clicked and the first playlist has been deleted");
-                }
-
+                deletePlaylistAfterClick();
+            }
             }
 
-
-            }
     //Create Playlist on sidebar
     private static void createPlaylistSidebar(String namePlaylist) {
         WebElement playlistSidebarElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@id='playlists']/h1/i")));
@@ -186,6 +162,26 @@ public class BaseTest {
         WebElement newPlaylistSidebarEnter = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']/form/input")));
         newPlaylistSidebarEnter.sendKeys(namePlaylist, Keys.ENTER);
     }
+
+    //Delete Playlist on sidebar after click, by xPLAYLIST
+    private static void deletePlaylistAfterClick() {
+        //Find the sign - Playlist is empty
+        List<WebElement> emptyPLs = driver.findElements(By.xpath("//section[@id='playlistWrapper']//div[@class='screen-placeholder']//div//div[@class='text']"));
+        int countEmpty = emptyPLs.size(); //If countEmpty = 0, playlist is not empty
+
+        WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Playlist']")));
+        deletePlaylist.click();
+
+        if (countEmpty !=0) {
+            System.out.println("The first playlist was empty and has been deleted");
+        }
+        else {
+            WebElement okButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Ok']")));
+            okButton.click();
+            System.out.println("Ok button clicked and the first playlist has been deleted");
+        }
+    }
+
 
     //Check notification:
     // 1) No: The song is already in the playlist
