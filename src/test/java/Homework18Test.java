@@ -12,6 +12,7 @@ public class Homework18Test extends BaseTest {
 
         //Play song
         playSong();
+        //Thread.sleep(2000);
 
         //Validate that a song is playing
           //by verifying the sound bar

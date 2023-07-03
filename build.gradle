@@ -38,3 +38,9 @@ task Homework19Test(type: Test) {
         suites "src/test/resources/DeletePlayList.xml"
     }
 }
+
+task Homework20Test(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/WaitDeletePlayList.xml"
+    }
+}
