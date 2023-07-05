@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,7 +12,11 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.UUID;
+
+import org.openqa.selenium.interactions.Actions;
+
 
 public class BaseTest {
 
@@ -19,6 +24,8 @@ public class BaseTest {
 
     public static WebDriver driver = null;
     public static String url = "https://qa.koel.app/";
+
+    static List<WebElement> sidebarPlayLists; //Number of Playlists
 
     @BeforeSuite
     static void setupClass() {
@@ -43,9 +50,7 @@ public class BaseTest {
         driver.get(url);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
     }
-
 
     @AfterMethod
     public void closeBrowser() {
@@ -97,7 +102,7 @@ public class BaseTest {
         enterInput("search", song);
     }
 
-    //View all found songs
+    //View all FOUND songs
     protected static void viewAllButton() {
         //driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']")).click();
         submitClick("data-test", "view-all-songs-btn");
@@ -114,7 +119,7 @@ public class BaseTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn-add-to"))).click();
     }
 
-
+    //Add a song to Playlist
     protected static void addToPlaylist() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         List<WebElement> playlistElements = driver.findElements(By.cssSelector("#songResultsWrapper > header > div.song-list-controls > div > section.existing-playlists > ul > li.playlist"));
@@ -124,7 +129,7 @@ public class BaseTest {
             WebElement playlistElement = driver.findElement(By.cssSelector("#songResultsWrapper > header > div.song-list-controls > div > section.new-playlist > form > input[type=text]"));
             playlistElement.click();
             playlistElement.clear();
-            playlistElement.sendKeys("The First Playlist");
+            playlistElement.sendKeys("The First  Playlist (Add to...)");
             WebElement savePlaylistButton = driver.findElement(By.cssSelector("#songResultsWrapper > header > div.song-list-controls > div > section.new-playlist > form > button"));
             savePlaylistButton.click();
         } else {
@@ -137,20 +142,26 @@ public class BaseTest {
 
     //Delete the first playlist if exists (HW-19, HW-20)
     protected static void deleteFirstPlaylist()  {
-        List<WebElement> sidebarPlayLists = driver.findElements(By.xpath("//section[@id='playlists']/ul/li[3]"));
-
-        //int countPL = sidebarPlaylists.size();
-        if (sidebarPlayLists.isEmpty()) {
+        boolean playlistsExist = checkPlaylistsExist();
+        if (playlistsExist) {
+            //Delete the first Playlist
+            sidebarPlayLists.get(0).click();
+            deletePlaylistAfterClick();
+        }
+        else{
             // Create the first Playlist
             String namePlaylist = "The First Playlist";
             createPlaylistSidebar(namePlaylist);
             System.out.println("No playlists. We created " + namePlaylist + ". Try to delete now");
-        } else {
-            // Delete the first playlist
-            WebElement firstPlaylistElement = sidebarPlayLists.get(0);
-            firstPlaylistElement.click();
-            deletePlaylistAfterClick();
         }
+    }
+    //Check if Playlists exist
+    protected static boolean checkPlaylistsExist() {
+        sidebarPlayLists = driver.findElements(By.xpath("//section[@id='playlists']/ul/li[3]"));
+        if (sidebarPlayLists.isEmpty()) {
+            return false;
+        }
+        else {return true;}
     }
 
     //Create Playlist on sidebar
@@ -182,26 +193,39 @@ public class BaseTest {
         }
     }
 
+    //Rename the first playlist if exists (HW-21)
+    protected static void renameFirstPlaylist() {
 
-    //Check notification:
-    // 1) No: The song is already in the playlist
-    // 2) Added 1 song into "The First Playlist."
-    // 3) Created playlist "The First Playlist."
-    /*
-    public static String printNotificationText(String noNotification) {
-        List<WebElement> notificationElements = driver.findElements(By.cssSelector("div.success.show"));
-        String notificationText;
-        if (!notificationElements.isEmpty()) {
-            WebElement notificationElement = notificationElements.get(0);
-            notificationText = notificationElement.getText();
-            System.out.println("The notification is: "+notificationText);
+        boolean playlistsExist = checkPlaylistsExist();
+        if (playlistsExist) {
+            //Rename the first Playlist
+            sidebarPlayLists.get(0).click();
+            renamePlaylistAfterClick();
         } else {
-            notificationText = noNotification;
-            System.out.println(notificationText);
+            // Create the first Playlist
+            String namePlaylist = "The First Playlist";
+            createPlaylistSidebar(namePlaylist);
+            System.out.println("No playlists. We created " + namePlaylist + ". Try to rename now");
         }
-        return notificationText;
     }
-    */
+
+    protected static void renamePlaylistAfterClick() {
+        String namePlaylist = "Renamed Playlist";
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']/ul/li[3]")));
+        Actions action = new Actions(driver);
+        action.doubleClick(playlistElement).perform();
+
+        for (int i = 1; i < 30; i++) {
+            action.moveToElement(playlistElement).sendKeys(Keys.BACK_SPACE).perform();
+        }
+        action.moveToElement(playlistElement)
+                .sendKeys(namePlaylist)
+                .sendKeys(Keys.ENTER)
+                .perform();
+
+
+    }
+
 
     public static String printNotificationText(String noNotification) {
         try {
