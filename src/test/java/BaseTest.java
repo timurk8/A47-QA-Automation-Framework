@@ -276,9 +276,7 @@ public class BaseTest {
         playlistInputField.sendKeys(Keys.ENTER);
 
         Assert.assertTrue(doesPlaylistExist(newPlaylistName));
-
     }
-
     public static boolean doesPlaylistExist(String newPlaylistName) {
         WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='" + newPlaylistName + "' ]")));
         return playlistElement.isDisplayed();
