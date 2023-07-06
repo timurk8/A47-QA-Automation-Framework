@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Lecture21Test">
+    <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
+    <test name="Lecture21Test Test" preserve-order="false">
+        <classes>
+            <class name="Lecture21Test"/>
+            <class name="BaseTest"/>
+        </classes>
+    </test>
+
+</suite>

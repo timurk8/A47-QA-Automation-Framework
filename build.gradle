@@ -44,3 +44,15 @@ task Homework20Test(type: Test) {
         suites "src/test/resources/WaitDeletePlayList.xml"
     }
 }
+
+task Homework21Test(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/RenamePlaylist.xml"
+    }
+}
+
+task Lecture21Test(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/RenamePlaylist.xml"
+    }
+}
