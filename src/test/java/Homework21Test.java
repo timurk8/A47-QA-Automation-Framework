@@ -14,23 +14,15 @@ import java.util.List;
 public class Homework21Test extends BaseTest {
 
     @Test (dataProvider = "CorrectLoginProviders", dataProviderClass = BaseTest.class)
-    public void renamePlaylist(String email, String password) throws InterruptedException {
+    public void renamePlaylist(String email, String password)  {
 
         //Login Koel
         loginKoel(email,password);
 
-        //Delete the first playlist
+        //Rename the first playlist
         renameFirstPlaylist();
 
-        Thread.sleep(2000);
-
-
-        //Notification
-        //String deletedPlaylistMsg = "Deleted playlist";
-        //String createdPlaylistMsg = "Created playlist";
-
         String printNT = printNotificationText("No notification ");
-        //Assert.assertTrue(printNT.contains(deletedPlaylistMsg)||printNT.contains(createdPlaylistMsg));
 
     }
 
