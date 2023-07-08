@@ -1,3 +1,5 @@
+package tradional;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,7 +29,7 @@ public class BaseTest {
     public static WebDriver driver = null;
     public static String url = "https://qa.koel.app/";
 
-    static List<WebElement> sidebarPlayLists; //Number of Playlists
+    public static List<WebElement> sidebarPlayLists; //Number of Playlists
 
     private static Actions action;
 
@@ -166,10 +168,12 @@ public class BaseTest {
     //Check if Playlists exist
     protected static boolean checkPlaylistsExist() {
         sidebarPlayLists = driver.findElements(By.xpath("//section[@id='playlists']/ul/li[3]"));
-        if (sidebarPlayLists.isEmpty()) {
-            return false;
-        }
-        else {return true;}
+//        if (sidebarPlayLists.isEmpty()) {
+//            return false;
+//        }
+//        else {return true;}
+        return !sidebarPlayLists.isEmpty();
+
     }
 
     //Create Playlist on sidebar
