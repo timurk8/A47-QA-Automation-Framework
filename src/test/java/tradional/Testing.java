@@ -1,26 +1,21 @@
+package tradional;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.UUID;
-
-import org.openqa.selenium.interactions.Actions;
 
 
-public class BaseTest {
+public class Testing {
 
     public static WebDriverWait wait;
 
@@ -28,7 +23,6 @@ public class BaseTest {
     public static String url = "https://qa.koel.app/";
 
     static List<WebElement> sidebarPlayLists; //Number of Playlists
-
     private static Actions action;
 
 
@@ -52,7 +46,6 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         action = new Actions(driver);
-
 
         url = BaseURL;
         driver.get(url);
@@ -201,6 +194,10 @@ public class BaseTest {
         }
     }
 
+
+
+
+
     public static String printNotificationText(String noNotification) {
         try {
             WebElement notificationElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
@@ -240,6 +237,56 @@ public class BaseTest {
         return pauseButton.isDisplayed();
     }
 
+    // Double Click Method
+    public void doubleClickChoosePlaylist() {
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        action.doubleClick(playlistElement).perform();
+    }
+
+    // Play song helper functions
+    public void chooseAllSongsList() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".overlay.loading")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li a.songs"))).click();
+    }
+
+    public void contextClickFirstSong() {
+        WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
+        action.contextClick(firstSongElement).perform();
+    }
+
+    public void choosePlayOption() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
+    }
+
+    // Hover helper functions
+    public WebElement hoverPlay() {
+        WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        action.moveToElement(play).perform();
+        return driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+    }
+
+    // Count Songs Helper Functions
+    public void choosePlaylistByName(String playlistName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
+    }
+
+    public int countSongs() {
+        return driver.findElements(By.cssSelector("section#playlistWarpper td.title")).size();
+    }
+
+    public String getPlaylistDetails() {
+        return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
+    }
+
+    public void displayAllSongs() {
+        List<WebElement> songList = driver.findElements(By.cssSelector("section#playlistWrapper td.title"));
+        System.out.println("Number of Songs Found:" + countSongs());
+        for (WebElement e: songList) {
+            System.out.println(e.getText());
+        }
+
+    }
 
     //Rename the first playlist if exists (HW-21)
     protected static void renameFirstPlaylist() {
@@ -276,10 +323,12 @@ public class BaseTest {
         playlistInputField.sendKeys(Keys.ENTER);
 
         Assert.assertTrue(doesPlaylistExist(newPlaylistName));
+
     }
+
     public static boolean doesPlaylistExist(String newPlaylistName) {
         WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='" + newPlaylistName + "' ]")));
         return playlistElement.isDisplayed();
     }
 
-}
+    }

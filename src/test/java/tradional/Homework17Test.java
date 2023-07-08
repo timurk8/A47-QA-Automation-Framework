@@ -1,3 +1,6 @@
+package tradional;
+
+
 import org.testng.annotations.Test;
 
 import java.time.Duration;
