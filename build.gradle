@@ -17,23 +17,14 @@ dependencies {
 
 test {
     useTestNG()
+    testLogging {
+        exceptionFormat = 'full'
+    }
 }
 
-def testTasks = [
-        'Homework17Test': 'TestNG.xml',
-        'Homework18Test': 'PlaySong.xml',
-        'Homework19Test': 'DeletePlayList.xml',
-        'Homework20Test': 'WaitDeletePlayList.xml',
-        'Homework21Test': 'RenamePlaylist.xml',
-        'LoginTests': 'LoginTests.xml'
-
-]
-
-testTasks.each { taskName, suiteFile ->
-    task "${taskName}"(type: Test) {
-        useTestNG {
-            suites "src/test/java/traditional/resources/${suiteFile}",
-                    "src/test/java/pages/resources/${suiteFile}"
-        }
+// Запуск тестов с помощью командной строки Gradle
+if (project.hasProperty('suiteFile')) {
+    test {
+        systemProperty 'suiteFile', suiteFile
     }
 }

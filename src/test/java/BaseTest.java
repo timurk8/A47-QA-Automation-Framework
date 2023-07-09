@@ -1,27 +1,36 @@
-package pages;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.UUID;
+
+import org.openqa.selenium.interactions.Actions;
 
 
-public class BasePagesTest {
+public class BaseTest {
+
     public static WebDriverWait wait;
-    public static WebDriver driver;
+
+    public static WebDriver driver = null;
     public static String url = "https://qa.koel.app/";
+
     public static List<WebElement> sidebarPlayLists; //Number of Playlists
 
     private static Actions action;
+
 
     @BeforeSuite
     static void setupClass() {
@@ -43,6 +52,7 @@ public class BasePagesTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         action = new Actions(driver);
+
 
         url = BaseURL;
         driver.get(url);
@@ -273,5 +283,6 @@ public class BasePagesTest {
         WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='" + newPlaylistName + "' ]")));
         return playlistElement.isDisplayed();
     }
+
 
 }
