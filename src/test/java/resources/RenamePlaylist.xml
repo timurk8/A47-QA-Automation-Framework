@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Lecture21Test">
+<suite name="Rename Playlist">
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
-    <test name="Lecture21Test Test" preserve-order="false">
+    <test name="Rename Playlist Test" preserve-order="false">
         <classes>
-            <class name="tradional.Lecture21Test"/>
-            <class name="tradional.BaseTest"/>
+            <class name="Homework22RenamePlaylist"/>
         </classes>
     </test>
 

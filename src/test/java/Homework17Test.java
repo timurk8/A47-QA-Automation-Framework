@@ -1,9 +1,4 @@
-package tradional;
-
-
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 
 public class Homework17Test extends BaseTest {

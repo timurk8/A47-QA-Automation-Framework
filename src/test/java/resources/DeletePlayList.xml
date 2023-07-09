@@ -5,8 +5,8 @@
     <parameter name="BaseURL" value="https://qa.koel.app/"></parameter>
     <test name="Homework19Test Test" preserve-order="false">
         <classes>
-            <class name="tradional.Homework19Test"/>
-            <class name="tradional.BaseTest"/>
+            <class name="Homework19Test"/>
+            <class name="BaseTest"/>
         </classes>
     </test>
 
