@@ -22,7 +22,6 @@ test {
     }
 }
 
-// Запуск тестов с помощью командной строки Gradle
 if (project.hasProperty('suiteFile')) {
     test {
         systemProperty 'suiteFile', suiteFile
