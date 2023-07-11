@@ -11,10 +11,10 @@ public class AllSongsPage extends BasePage {
     By playOption = By.cssSelector("li.playback");
 
     public void contextClickFirstSong()   {
-       actions.contextClick(findElement(firstSong)).perform();
+        actions.contextClick(findElement(firstSong)).perform();
     }
     public void choosePlayOption() {
-       findElement(playOption).click();
+        findElement(playOption).click();
     }
 
 
