@@ -10,20 +10,31 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.testng:testng:7.8.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.10.0'
-    testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.0'
+    testImplementation 'org.testng:testng:7.6.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
 }
 
 test {
-    useTestNG()
-    testLogging {
-        exceptionFormat = 'full'
+    useTestNG() {
+        suites "src/test/resources/TestNG.xml"
     }
 }
 
-if (project.hasProperty('suiteFile')) {
-    test {
-        systemProperty 'suiteFile', suiteFile
+task testSmoke(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Smoke.xml"
+    }
+}
+
+task testRegression(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Regression.xml"
+    }
+}
+
+task testPlaylist(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Playlist.xml"
     }
 }
