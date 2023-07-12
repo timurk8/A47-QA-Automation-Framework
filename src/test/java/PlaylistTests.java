@@ -28,6 +28,7 @@ public class PlaylistTests extends BaseTest {
             homePage.doubleClickPlaylist();
             homePage.enterNewPlaylistName(playlistName);
 
+            System.out.println(playlistName + " - playlistName");
             Assert.assertEquals(homePage.getPlaylistName(), playlistName);
         }
         else{

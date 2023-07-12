@@ -7,9 +7,9 @@ public class LoginPage extends BasePage{
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    By emailField = By.cssSelector("input[type='email']");
-    By passwordField = By.cssSelector("input[type='password']");
-    By submitBtn = By.cssSelector("button[type='submit']");
+    private By emailField = By.cssSelector("input[type='email']");
+    private By passwordField = By.cssSelector("input[type='password']");
+    private By submitBtn = By.cssSelector("button[type='submit']");
     public void provideEmail(String email) {
         findElement(emailField).sendKeys(email);
     }

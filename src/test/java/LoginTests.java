@@ -9,12 +9,18 @@ import pom.LoginPage;
 
 public class LoginTests extends BaseTest {
 
+//    private pom.LoginPage loginPage = new LoginPage(driver);
+//    private pom.HomePage homePage = new HomePage(driver);
+
     @Test (dataProvider = "IncorrectLoginData", dataProviderClass = BaseTest.class, enabled = true, priority = 0, description = "Login with invalid email and valid password")
     public void loginInvalidEmailValidPasswordTest(String username, String password){
 
-        provideEmail(username);
-        providePassword(password);
-        clickSubmit();
+        pom.LoginPage loginPage = new LoginPage(driver);
+        pom.HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("incorrect@incorrect.com");
+        loginPage.providePassword("incorrect");
+        loginPage.clickSubmit();
 
         Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
     }
@@ -22,20 +28,26 @@ public class LoginTests extends BaseTest {
     @Test (enabled = true, priority = 1, description = "Login with valid email and valid password")
     public void loginValidEmailPasswordTest(){
 
+        pom.LoginPage loginPage = new LoginPage(driver);
+        pom.HomePage homePage = new HomePage(driver);
+
         navigateToPage();
-        provideEmail("bugbusters@testpro.io");
-        providePassword("te$t$tudent");
-        clickSubmit();
+        loginPage.provideEmail("bugbusters@testpro.io");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
         isAvatarDisplayed();
     }
 
     @Test (enabled = true, priority = 3, description = "Login with valid email and empty password")
     public void loginValidEmailEmptyPasswordTest() {
 
+        pom.LoginPage loginPage = new LoginPage(driver);
+        pom.HomePage homePage = new HomePage(driver);
+
         navigateToPage();
-        provideEmail("bugbusters@testpro.io");
-        providePassword("");
-        clickSubmit();
+        loginPage.provideEmail("bugbusters@testpro.io");
+        loginPage.providePassword("");
+        loginPage.clickSubmit();
 
         Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
     }

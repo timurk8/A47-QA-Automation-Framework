@@ -12,9 +12,9 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
-    By playlistNameField = By.cssSelector("[name='name']");
-    By userAvatarIcon = By.cssSelector("img.avatar");
+    private By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
+    private By playlistNameField = By.cssSelector("[name='name']");
+    private By userAvatarIcon = By.cssSelector("img.avatar");
 
     By avatarIcon = By.cssSelector("img[class='avatar']");
 

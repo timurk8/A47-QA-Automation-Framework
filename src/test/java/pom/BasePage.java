@@ -16,8 +16,8 @@ public class BasePage {
     protected static WebDriverWait wait;
     protected static WebDriver driver;
 
-    By allSongsList = By.cssSelector("li a.songs");
-    By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
+    private By allSongsList = By.cssSelector("li a.songs");
+    private By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
 
     public BasePage( WebDriver givenDriver) {
         driver = givenDriver;
