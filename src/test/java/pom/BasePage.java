@@ -19,15 +19,15 @@ public class BasePage {
     private By allSongsList = By.cssSelector("li a.songs");
     private By soundBarVisualizer = By.cssSelector("[data-testid = 'sound-bar-play']");
 
-    public BasePage( WebDriver givenDriver) {
+    protected BasePage( WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver);
     }
-    public WebElement findElement(By locator) {
+    protected WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    public void click (By locator) {
+    protected void click (By locator) {
         findElement(locator).click();
     }
     public void doubleClick (By locator) {

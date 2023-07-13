@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pom.HomePage;
-import pom.LoginPage;
+import pagefactory.HomePage;
+import pagefactory.LoginPage;
 
 import java.time.LocalTime;
 
@@ -15,7 +15,7 @@ public class PlaylistTests extends BaseTest {
         int second = currentTime.getSecond();
         String playlistName = "Renamed Playlist POM "+currentTime.getSecond(); //Just add seconds to have different names
 
-        pom.LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail("bugbusters@testpro.io");
@@ -37,3 +37,4 @@ public class PlaylistTests extends BaseTest {
 
     }
 }
+
