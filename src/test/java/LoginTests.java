@@ -3,8 +3,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pom.HomePage;
-import pom.LoginPage;
+import pagefactory.HomePage;
+import pagefactory.LoginPage;
 
 
 public class LoginTests extends BaseTest {
@@ -15,8 +15,8 @@ public class LoginTests extends BaseTest {
     @Test (dataProvider = "IncorrectLoginData", dataProviderClass = BaseTest.class, enabled = true, priority = 0, description = "Login with invalid email and valid password")
     public void loginInvalidEmailValidPasswordTest(String username, String password){
 
-        pom.LoginPage loginPage = new LoginPage(driver);
-        pom.HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail("incorrect@incorrect.com");
         loginPage.providePassword("incorrect");
@@ -28,8 +28,8 @@ public class LoginTests extends BaseTest {
     @Test (enabled = true, priority = 1, description = "Login with valid email and valid password")
     public void loginValidEmailPasswordTest(){
 
-        pom.LoginPage loginPage = new LoginPage(driver);
-        pom.HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
         navigateToPage();
         loginPage.provideEmail("bugbusters@testpro.io");
@@ -41,8 +41,8 @@ public class LoginTests extends BaseTest {
     @Test (enabled = true, priority = 3, description = "Login with valid email and empty password")
     public void loginValidEmailEmptyPasswordTest() {
 
-        pom.LoginPage loginPage = new LoginPage(driver);
-        pom.HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
         navigateToPage();
         loginPage.provideEmail("bugbusters@testpro.io");
