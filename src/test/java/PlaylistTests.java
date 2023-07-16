@@ -13,6 +13,7 @@ public class PlaylistTests extends BaseTest {
 
         LocalTime currentTime = LocalTime.now();
         int second = currentTime.getSecond();
+        System.out.println("Local time now: " + currentTime);
         String playlistName = "Renamed Playlist POM "+currentTime.getSecond(); //Just add seconds to have different names
 
         LoginPage loginPage = new LoginPage(driver);
