@@ -24,6 +24,7 @@ test {
 task testSmoke(type: Test) {
     useTestNG() {
         suites "src/test/resources/Smoke.xml"
+        systemProperty "browser", System.getProperty("browserName")
     }
 }
 
@@ -36,5 +37,6 @@ task testRegression(type: Test) {
 task testPlaylist(type: Test) {
     useTestNG() {
         suites "src/test/resources/Playlist.xml"
+        systemProperty "browser", System.getProperty("browserName")
     }
 }
