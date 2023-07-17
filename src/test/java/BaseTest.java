@@ -1,19 +1,25 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class BaseTest {
@@ -23,7 +29,7 @@ public class BaseTest {
     public static WebDriverWait wait = null;
     public static Actions actions = null;
 
-    public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<WebDriver>();
+    public static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
 
     @DataProvider(name="IncorrectLoginData")
@@ -36,6 +42,35 @@ public class BaseTest {
         };
     }
 
+
+    @BeforeMethod
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String BaseURL) throws MalformedURLException {
+
+//        driver = pickBrowser(System.getProperty("browser"));
+
+        threadDriver.set( pickBrowser(System.getProperty("browser")) );
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().window().maximize();
+
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        actions = new Actions(getDriver());
+
+        url = BaseURL;
+        navigateToPage();
+    }
+
+    @AfterMethod
+    public void closeBrowser() {
+        getDriver().quit();
+        threadDriver.remove();
+    }
+
+    public WebDriver getDriver() {
+        return threadDriver.get();
+    }
+
+
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
@@ -45,7 +80,6 @@ public class BaseTest {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return driver = new FirefoxDriver();
-
             case "MicrosoftEdge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
@@ -64,35 +98,15 @@ public class BaseTest {
 
             default:
                 WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-                return driver = new ChromeDriver(options);
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                return driver = new ChromeDriver(chromeOptions);
         }
 
     }
 
-    @BeforeMethod
-    @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL) throws MalformedURLException {
-
-        driver = pickBrowser(System.getProperty("browser"));
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        driver.manage().window().maximize();
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        actions = new Actions(driver);
-
-        url = BaseURL;
-        navigateToPage();
-    }
-    @AfterMethod
-    public void closeBrowser() {
-        driver.quit();
-    }
     public  void navigateToPage() {
-        driver.get(url);
+        getDriver().get(url);
     }
-
 
 }
