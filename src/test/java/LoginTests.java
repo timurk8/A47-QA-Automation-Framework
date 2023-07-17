@@ -9,9 +9,6 @@ import pagefactory.LoginPage;
 
 public class LoginTests extends BaseTest {
 
-//    private pom.LoginPage loginPage = new LoginPage(driver);
-//    private pom.HomePage homePage = new HomePage(driver);
-
     @Test (dataProvider = "IncorrectLoginData", dataProviderClass = BaseTest.class, enabled = true, priority = 0, description = "Login with invalid email and valid password")
     public void loginInvalidEmailValidPasswordTest(String username, String password){
 
@@ -56,8 +53,6 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
 
-
-    //Fluent interfaces example
     @Test
     public void LoginValidEmailPasswordTest () {
 
@@ -70,7 +65,6 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.isAvatarDisplayed());
     }
 
-    //    OR
     @Test
     public void LoginEmptyEmailPasswordTest() {
 
