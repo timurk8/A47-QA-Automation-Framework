@@ -36,8 +36,6 @@ public class BaseTest {
         };
     }
 
-    @BeforeSuite
-
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
