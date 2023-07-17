@@ -8,7 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-//import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
@@ -38,24 +37,17 @@ public class BaseTest {
     }
 
     @BeforeSuite
-    static void setupClass() {
-//        WebDriverManager.chromedriver().setup();
-//        WebDriverManager.firefoxdriver().setup();
-//        WebDriverManager.safaridriver().setup();
-    }
 
-    public static WebDriver pickBrowser(String browserName) throws MalformedURLException {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
 
 
-        switch (browserName){
+        switch (browser){
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return driver = new FirefoxDriver();
-//            case "safari":
-//                WebDriverManager.safaridriver().setup();
-//                return driver = new SafariDriver();
+
             case "MicrosoftEdge":
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
@@ -71,9 +63,6 @@ public class BaseTest {
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-//            case "grid-safari":
-//                caps.setCapability("browserName", "safari");
-//                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             default:
                 WebDriverManager.chromedriver().setup();
@@ -87,14 +76,6 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL) throws MalformedURLException {
-        //      Added ChromeOptions argument below to fix websocket error
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--remote-allow-origins=*");
-//
-//        driver = new ChromeDriver(options);
-
-//        driver = new FirefoxDriver();
-//        driver = new SafariDriver();
 
         driver = pickBrowser(System.getProperty("browser"));
 
@@ -114,7 +95,6 @@ public class BaseTest {
     public  void navigateToPage() {
         driver.get(url);
     }
-
 
 
 }
