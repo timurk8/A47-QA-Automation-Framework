@@ -15,8 +15,8 @@ public class PlaylistTests extends BaseTest {
         System.out.println("Local time now: " + currentTime);
         String playlistName = "Renamed Playlist POM "+currentTime.getSecond(); //Just add seconds to have different names
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.provideEmail("bugbusters@testpro.io");
         loginPage.providePassword("te$t$tudent");
