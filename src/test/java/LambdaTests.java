@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class LambdaTests {
-    DesiredCapabilities caps = new DesiredCapabilities();
 
     public static WebDriver lambdaTestChromeWindows() throws MalformedURLException {
         String hubURL="https://hub.lambdatest.com/wd/hub";
@@ -30,39 +29,6 @@ public class LambdaTests {
 
     }
 
-    public static WebDriver lambdaTestChromeMac() throws MalformedURLException {
-        String hubURL="https://hub.lambdatest.com/wd/hub";
-
-        ChromeOptions browserOptions = new ChromeOptions();
-        browserOptions.setPlatformName("MacOS Ventura");
-        browserOptions.setBrowserVersion("114.0");
-        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("username", "timur.karimov");
-        ltOptions.put("accessKey", "MjHDOTIHLk61u0PtoKl9uXDumyYKEQS4ntzRwztKPmPSyYry7Z");
-        ltOptions.put("project", "Untitled");
-        ltOptions.put("w3c", true);
-        browserOptions.setCapability("LT:Options", ltOptions);
-
-        return new RemoteWebDriver(new URL(hubURL), browserOptions);
-
-    }
-
-    public static WebDriver lambdaTestFirefoxMac() throws MalformedURLException {
-        String hubURL="https://hub.lambdatest.com/wd/hub";
-
-        FirefoxOptions browserOptions = new FirefoxOptions();
-        browserOptions.setPlatformName("MacOS Monterey");
-        browserOptions.setBrowserVersion("114.0");
-        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("username", "timur.karimov");
-        ltOptions.put("accessKey", "MjHDOTIHLk61u0PtoKl9uXDumyYKEQS4ntzRwztKPmPSyYry7Z");
-        ltOptions.put("project", "Untitled");
-        ltOptions.put("w3c", true);
-        browserOptions.setCapability("LT:Options", ltOptions);
-
-        return new RemoteWebDriver(new URL(hubURL), browserOptions);
-
-    }
 
     public static WebDriver lambdaTestFirefoxWindows() throws MalformedURLException {
         String hubURL="https://hub.lambdatest.com/wd/hub";

@@ -67,20 +67,20 @@ public class BaseTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
 
-        if (browser.substring(0, 5).equalsIgnoreCase("cloud")) {
+        if (browser.length() >= 5 && browser.substring(0, 5).equalsIgnoreCase("cloud")) {
 
             switch (browser) {
-                case "cloud-chrome-mac":
-                    return LambdaTests.lambdaTestChromeMac();
-                case "cloud-firefox-mac":
-                    return LambdaTests.lambdaTestFirefoxMac();
                 case "cloud-firefox-windows":
+                    System.out.println("----CASE: cloud-firefox-windows");
                     return LambdaTests.lambdaTestFirefoxWindows();
                 case "cloud-edge-windows":
+                    System.out.println("----CASE: cloud-edge-windows");
                     return LambdaTests.lambdaTestEdgeWindows();
                 case "cloud-safari-mac":
+                    System.out.println("----CASE: cloud-safari-mac");
                     return LambdaTests.lambdaTestSafariMac();
                 default:
+                    System.out.println("----CASE: cloud-chrome-windows");
                     return LambdaTests.lambdaTestChromeWindows();
             }
 
@@ -89,27 +89,30 @@ public class BaseTest {
 
             switch (browser) {
                 case "firefox":
+                    System.out.println("----CASE: firefox");
                     WebDriverManager.firefoxdriver().setup();
                     return driver = new FirefoxDriver();
                 case "MicrosoftEdge":
+                    System.out.println("----CASE: MicrosoftEdge");
                     WebDriverManager.edgedriver().setup();
                     EdgeOptions edgeOptions = new EdgeOptions();
                     edgeOptions.addArguments("--remote-allow-origins=*");
                     return driver = new EdgeDriver(edgeOptions);
 
                 case "grid-edge":
+                    System.out.println("----CASE: Grid-Edge");
                     caps.setCapability("browserName", "MicrosoftEdge");
                     return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
                 case "grid-firefox":
+                    System.out.println("----CASE: Grid-Firefox");
                     caps.setCapability("browserName", "firefox");
                     return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
                 case "grid-chrome":
+                    System.out.println("----CASE: Grid-Chrome");
                     caps.setCapability("browserName", "chrome");
                     return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-//            case "cloud":
-//                return lambdaTest(browser);
-
                 default:
+                    System.out.println("----CASE: Chrome");
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--remote-allow-origins=*");
