@@ -111,6 +111,8 @@ public class BaseTest {
                     System.out.println("----CASE: Grid-Chrome");
                     caps.setCapability("browserName", "chrome");
                     return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                case "lambda-chrome-windows":
+                    return LambdaTests.lambdaTestChromeWindows();
                 default:
                     System.out.println("----CASE: Chrome");
                     WebDriverManager.chromedriver().setup();

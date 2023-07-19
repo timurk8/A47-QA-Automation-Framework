@@ -41,3 +41,17 @@ task testPlaylist(type: Test) {
         systemProperty "browser", System.getProperty("browserName")
     }
 }
+
+task testRegressionJenkins(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/${suite}.xml"
+        systemProperty "browser", System.getProperty("browserName")
+    }
+}
+
+task testPlaylistJenkins(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/${suite}.xml"
+        systemProperty "browser", System.getProperty("browserName")
+    }
+}
