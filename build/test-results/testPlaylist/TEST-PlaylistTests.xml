@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PlaylistTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-19T23:11:16" hostname="Timur-K.local" time="2.635">
+  <properties/>
+  <testcase name="renamePlaylist" classname="PlaylistTests" time="2.635"/>
+  <system-out><![CDATA[----CASE: firefox
+Local time now: 02:11:16.807788
+Playlists exist - true
+Renamed Playlist POM 16 - playlistName
+]]></system-out>
+  <system-err><![CDATA[Jul 20, 2023 2:11:10 AM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+]]></system-err>
+</testsuite>
