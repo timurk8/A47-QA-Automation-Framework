@@ -67,6 +67,11 @@ public class BaseTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
 
+        if (browser==null){
+            browser="chrome";
+        }
+
+
         if (browser.length() >= 5 && browser.substring(0, 5).equalsIgnoreCase("cloud")) {
 
             switch (browser) {
