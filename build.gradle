@@ -55,3 +55,11 @@ task testPlaylistJenkins(type: Test) {
         systemProperty "browser", System.getProperty("browser")
     }
 }
+
+task testLogin(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Smoke.xml"
+        systemProperty "browser", System.getProperty("browser")
+    }
+    include "LoginTests.loginValidEmailPasswordTest"
+}
