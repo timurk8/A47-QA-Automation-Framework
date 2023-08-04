@@ -69,7 +69,7 @@ public class BaseTest {
         String gridURL = "http://192.168.1.53:4444";
 
         if (browser==null){
-            browser="chrome";
+            browser="firefox";
         }
 
 
