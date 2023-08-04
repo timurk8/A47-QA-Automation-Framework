@@ -92,6 +92,7 @@ public class BaseTest {
         }
         else {
 
+            browser = "MicrosoftEdge";
 
             switch (browser) {
                 case "firefox":
@@ -120,15 +121,11 @@ public class BaseTest {
                 case "lambda-chrome-windows":
                     return LambdaTests.lambdaTestChromeWindows();
                 default:
-                    System.out.println("----CASE: firefox");
-                    WebDriverManager.firefoxdriver().setup();
-                    return driver = new FirefoxDriver();
-
-//                    System.out.println("----CASE: Chrome");
-//                    WebDriverManager.chromedriver().setup();
-//                    ChromeOptions chromeOptions = new ChromeOptions();
-//                    chromeOptions.addArguments("--remote-allow-origins=*");
-//                    return driver = new ChromeDriver(chromeOptions);
+                    System.out.println("----CASE: Chrome");
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--remote-allow-origins=*");
+                    return driver = new ChromeDriver(chromeOptions);
             }
         }
     }
