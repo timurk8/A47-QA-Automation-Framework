@@ -92,8 +92,6 @@ public class BaseTest {
 
         }
         else {
-            System.out.println("----CASE: " + browser + "-------------");
-            browser = "MicrosoftEdge";
 
             switch (browser) {
                 case "firefox":
