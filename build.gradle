@@ -13,53 +13,15 @@ dependencies {
     testImplementation 'org.testng:testng:7.8.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.10.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.0'
+    implementation 'io.cucumber:cucumber-testng:7.13.0'
+    implementation 'io.cucumber:cucumber-core:7.13.0'
+    implementation 'io.cucumber:cucumber-java:7.13.0'
+    implementation 'io.cucumber:gherkin:26.2.0'
+
 }
 
 test {
     useTestNG() {
         suites "src/test/resources/${suite}.xml"
         systemProperty "browser", System.getProperty("browser")    }
-}
-
-task testSmoke(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/Smoke.xml"
-        systemProperty "browser", System.getProperty("browser")
-    }
-}
-
-task testRegression(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/Regression.xml"
-        systemProperty "browser", System.getProperty("browser")
-    }
-}
-
-task testPlaylist(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/Playlist.xml"
-        systemProperty "browser", System.getProperty("browser")
-    }
-}
-
-task testRegressionJenkins(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/${suite}.xml"
-        systemProperty "browser", System.getProperty("browser")
-    }
-}
-
-task testPlaylistJenkins(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/${suite}.xml"
-        systemProperty "browser", System.getProperty("browser")
-    }
-}
-
-task testLogin(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/Smoke.xml"
-        systemProperty "browser", System.getProperty("browser")
-    }
-    include "LoginTests.loginValidEmailPasswordTest"
 }

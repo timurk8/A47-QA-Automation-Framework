@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PlaylistTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-04T15:58:56" hostname="Timur-K.local" time="3.177">
+  <properties/>
+  <testcase name="renamePlaylist" classname="PlaylistTests" time="3.177"/>
+  <system-out><![CDATA[----CASE: Chrome
+Local time now: 18:58:56.544152
+Playlists exist - true
+Renamed Playlist POM 56 - playlistName
+]]></system-out>
+  <system-err><![CDATA[Aug 04, 2023 6:58:50 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 04, 2023 6:58:51 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+]]></system-err>
+</testsuite>
