@@ -20,6 +20,10 @@ dependencies {
 
 }
 
+ext {
+    suite = project.findProperty('suite')?: 'defaultSuiteName'
+}
+
 test {
     useTestNG() {
         suites "src/test/resources/${suite}.xml"
@@ -32,3 +36,4 @@ task testPlaylistJenkins(type: Test) {
         systemProperty "browser", System.getProperty("browser")
     }
 }
+
