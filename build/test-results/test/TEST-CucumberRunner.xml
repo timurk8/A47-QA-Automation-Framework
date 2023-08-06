@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CucumberRunner" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-08-06T09:09:34" hostname="Timur-K.local" time="29.58">
+  <properties/>
+  <testcase name="runScenario[0](&quot;Login Success&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="8.744"/>
+  <testcase name="runScenario[1](&quot;Login Incorrect Password&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="7.077"/>
+  <testcase name="runScenario[2](&quot;Login Email Not Existing&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="6.878"/>
+  <testcase name="runScenario[3](&quot;Empty Login and Password&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="6.877"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 06, 2023 12:09:34 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:35 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+Aug 06, 2023 12:09:42 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+Aug 06, 2023 12:09:50 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:50 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+Aug 06, 2023 12:09:56 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:57 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+]]></system-err>
+</testsuite>
