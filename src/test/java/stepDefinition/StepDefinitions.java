@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -53,6 +54,7 @@ public class StepDefinitions {
     @And("I submit")
     public void clickSubmit() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[alt='Avatar of Timur']")));
     }
     @Then("I am logged into the website")
     public void userIsLoggedIn() {
@@ -64,60 +66,50 @@ public class StepDefinitions {
 
     }
 
+//    @When("I push the button play")
+//    public void iPushTheButtonPlay() throws InterruptedException {
+//
+//        String playNextButtonLocator = "//i[@data-testid='play-next-btn']";
+//        WebElement playNextButtonElement = driver.findElement(By.xpath(playNextButtonLocator));
+//
+//        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+//        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", playNextButtonElement);
+//        jsExecutor.executeScript("arguments[0].click();", playNextButtonElement);
+//
+//        String playButtonLocator = "//span[@data-testid='play-btn']";
+//        WebElement playButtonElement = driver.findElement(By.xpath(playButtonLocator));
+//        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", playButtonElement);
+//        jsExecutor.executeScript("arguments[0].click();", playButtonElement);
+//    }
+
     @When("I push the button play")
     public void iPushTheButtonPlay() {
 
-//        WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(play).click().perform();
-//
-        //Click "Play next song"
-        String playNextButtonLocator = "//i[@data-testid='play-next-btn']";
-        WebElement playNextButtonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playNextButtonLocator)));
-        playNextButtonElement.click();
+        WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(play).click().perform();
 
-        //Click "Play button"
-        String playButtonLocator = "//span[@data-testid='play-btn']";
-        WebElement playButtonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playButtonLocator)));
-        playButtonElement.click();
-
-
-        //Hover
-
-//            WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
-//            Actions actions = new Actions(driver);
-//            actions.moveToElement(play).click().perform();
-
-
-
-        //Click "Play button"
-
-//        String playButtonLocator = "//span[@data-testid='play-btn']";
-        //*[@id="mainFooter"]/div[1]/span/span[2]/i
-//        String playButtonLocator = "//span[@title='Play or resume']";
-//        WebElement playButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playButtonLocator)));
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(playButton).click().perform();
-
-//        WebElement playButton = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(playButton).perform();
-//        playButton.click();
-
-//        WebElement buttonPlaySong = driver.findElement(By.xpath("//span[@title= 'Play or resume']"));
-//        Actions actions = new Actions(driver);
-//        actions.click(buttonPlaySong).perform();
-
-
-//        WebElement play = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@data-testid='play-btn']")));
-//        play.click();
     }
 
+
+
+
+//    @Then("music starts playing")
+//    public void musicStartsPlaying() {
+//        Assert.assertTrue(driver.findElement(By.cssSelector("div.bars")).isDisplayed(), "Sound bar is not displayed.");
+//    }
 
     @Then("music starts playing")
     public void musicStartsPlaying() {
-        Assert.assertTrue(driver.findElement(By.cssSelector("div.bars")).isDisplayed(), "Sound bar is not displayed.");
+        // Create a Duration object for a 10-second wait
+        Duration waitTime = Duration.ofSeconds(10);
+
+        WebDriverWait wait = new WebDriverWait(driver, waitTime);
+        WebElement soundBarElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.bars")));
+        Assert.assertTrue(soundBarElement.isDisplayed());
     }
+
+
 
     @When("I click All Songs")
     public void iClickAllSongs() {
