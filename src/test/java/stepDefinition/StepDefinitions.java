@@ -71,10 +71,15 @@ public class StepDefinitions {
 //        Actions actions = new Actions(driver);
 //        actions.moveToElement(play).click().perform();
 //
-//        //Click "Play next song"
-//        String playNextButtonLocator = "//i[@data-testid='play-next-btn']";
-//        WebElement playNextButtonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playNextButtonLocator)));
-//        playNextButtonElement.click();
+        //Click "Play next song"
+        String playNextButtonLocator = "//i[@data-testid='play-next-btn']";
+        WebElement playNextButtonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playNextButtonLocator)));
+        playNextButtonElement.click();
+
+        //Click "Play button"
+        String playButtonLocator = "//span[@data-testid='play-btn']";
+        WebElement playButtonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playButtonLocator)));
+        playButtonElement.click();
 
 
         //Hover
@@ -83,10 +88,7 @@ public class StepDefinitions {
 //            Actions actions = new Actions(driver);
 //            actions.moveToElement(play).click().perform();
 
-//        //Click "Play button"
-//        String playButtonLocator = "//span[@data-testid='play-btn']";
-//        WebElement playButtonElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playButtonLocator)));
-//        playButtonElement.click();
+
 
         //Click "Play button"
 
@@ -102,9 +104,9 @@ public class StepDefinitions {
 //        actions.moveToElement(playButton).perform();
 //        playButton.click();
 
-        WebElement buttonPlaySong = driver.findElement(By.xpath("//span[@title= 'Play or resume']"));
-        Actions actions = new Actions(driver);
-        actions.click(buttonPlaySong).perform();
+//        WebElement buttonPlaySong = driver.findElement(By.xpath("//span[@title= 'Play or resume']"));
+//        Actions actions = new Actions(driver);
+//        actions.click(buttonPlaySong).perform();
 
 
 //        WebElement play = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@data-testid='play-btn']")));

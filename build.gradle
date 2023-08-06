@@ -19,14 +19,10 @@ dependencies {
     implementation 'io.cucumber:gherkin:26.2.0'
 }
 
+
 test {
     useTestNG() {
         suites "src/test/resources/TestCucumber.xml"
     }
 }
 
-task testPlay(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/PlayCucumber.xml"
-    }
-}

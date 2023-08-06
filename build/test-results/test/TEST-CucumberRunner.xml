@@ -1,38 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CucumberRunner" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-08-06T08:10:59" hostname="Timur-K.local" time="15.073">
+<testsuite name="CucumberRunner" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-08-06T09:09:34" hostname="Timur-K.local" time="29.58">
   <properties/>
-  <testcase name="runScenario[0](&quot;Play music after Login&quot;, &quot;Play feature&quot;)" classname="CucumberRunner" time="15.073">
-    <failure message="org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[@title= 'Play or resume']&quot;}&#10;  (Session info: chrome=115.0.5790.114)&#10;For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception&#10;Build info: version: '4.10.0', revision: 'c14d967899'&#10;System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.5', java.version: '20.0.1'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Command: [7060e1fd49e7d4af9ba257493b55d98c, findElement {using=xpath, value=//span[@title= 'Play or resume']}]&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.114, chrome: {chromedriverVersion: 115.0.5790.170 (cc0d30c2ca5..., userDataDir: /var/folders/84/8j40whfd48s...}, goog:chromeOptions: {debuggerAddress: localhost:49520}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:49520/devtoo..., se:cdpVersion: 115.0.5790.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 7060e1fd49e7d4af9ba257493b55d98c" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[@title= 'Play or resume']&quot;}
-  (Session info: chrome=115.0.5790.114)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.10.0', revision: 'c14d967899'
-System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.5', java.version: '20.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [7060e1fd49e7d4af9ba257493b55d98c, findElement {using=xpath, value=//span[@title= 'Play or resume']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.114, chrome: {chromedriverVersion: 115.0.5790.170 (cc0d30c2ca5..., userDataDir: /var/folders/84/8j40whfd48s...}, goog:chromeOptions: {debuggerAddress: localhost:49520}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:49520/devtoo..., se:cdpVersion: 115.0.5790.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 7060e1fd49e7d4af9ba257493b55d98c
-	at java.base@20.0.1/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base@20.0.1/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base@20.0.1/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at app//org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
-	at app//org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
-	at app//org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
-	at app//org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at app//org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at app//org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at app//org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
-	at app//org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at app//org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at app//org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-	at app//org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-	at app//stepDefinition.StepDefinitions.iPushTheButtonPlay(StepDefinitions.java:105)
-	at ✽.I push the button play(file:///Users/timurkarimov/Documents/GitHub/A47-QA-Automation-Framework/src/test/resources/features/Play.feature:10)
-</failure>
-  </testcase>
+  <testcase name="runScenario[0](&quot;Login Success&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="8.744"/>
+  <testcase name="runScenario[1](&quot;Login Incorrect Password&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="7.077"/>
+  <testcase name="runScenario[2](&quot;Login Email Not Existing&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="6.878"/>
+  <testcase name="runScenario[3](&quot;Empty Login and Password&quot;, &quot;Login feature&quot;)" classname="CucumberRunner" time="6.877"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Aug 06, 2023 11:11:00 AM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+  <system-err><![CDATA[Aug 06, 2023 12:09:34 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
 INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
-Aug 06, 2023 11:11:02 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Aug 06, 2023 12:09:35 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+Aug 06, 2023 12:09:42 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+Aug 06, 2023 12:09:50 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:50 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
+Aug 06, 2023 12:09:56 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 06, 2023 12:09:57 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 115, so returning the closest version found: 114
 ]]></system-err>
 </testsuite>
