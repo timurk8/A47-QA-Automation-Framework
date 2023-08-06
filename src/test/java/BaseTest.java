@@ -13,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.Duration;
@@ -67,31 +68,6 @@ public class BaseTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
 
-        if (browser==null){
-            browser="chrome";
-        }
-
-
-        if (browser.length() >= 5 && browser.substring(0, 5).equalsIgnoreCase("cloud")) {
-
-            switch (browser) {
-                case "cloud-firefox-windows":
-                    System.out.println("----CASE: cloud-firefox-windows");
-                    return LambdaTests.lambdaTestFirefoxWindows();
-                case "cloud-edge-windows":
-                    System.out.println("----CASE: cloud-edge-windows");
-                    return LambdaTests.lambdaTestEdgeWindows();
-                case "cloud-safari-mac":
-                    System.out.println("----CASE: cloud-safari-mac");
-                    return LambdaTests.lambdaTestSafariMac();
-                default:
-                    System.out.println("----CASE: cloud-chrome-windows");
-                    return LambdaTests.lambdaTestChromeWindows();
-            }
-
-        }
-        else {
-
             switch (browser) {
                 case "firefox":
                     System.out.println("----CASE: firefox");
@@ -125,7 +101,6 @@ public class BaseTest {
                     chromeOptions.addArguments("--remote-allow-origins=*");
                     return driver = new ChromeDriver(chromeOptions);
             }
-        }
     }
 
     public  void navigateToPage() {
