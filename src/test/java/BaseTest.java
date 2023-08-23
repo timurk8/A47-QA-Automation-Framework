@@ -68,6 +68,8 @@ public class BaseTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.53:4444";
 
+        browser = "Chrome";
+
             switch (browser) {
                 case "firefox":
                     System.out.println("----CASE: firefox");

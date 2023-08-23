@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LoginTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-08-23T17:25:47" hostname="Timur-K.local" time="13.903">
+  <properties/>
+  <testcase name="LoginEmptyEmailPasswordTest" classname="LoginTests" time="0.202"/>
+  <testcase name="LoginValidEmailPasswordTest" classname="LoginTests" time="0.496"/>
+  <testcase name="loginInvalidEmailValidPasswordTest[0](invalid@mail.com, invalidPass)" classname="LoginTests" time="0.162"/>
+  <testcase name="loginValidEmailPasswordTest" classname="LoginTests" time="0.665"/>
+  <testcase name="loginInvalidEmailValidPasswordTest[1](demo@class.com, )" classname="LoginTests" time="0.185"/>
+  <testcase name="loginValidEmailEmptyPasswordTest" classname="LoginTests" time="0.251"/>
+  <testcase name="loginInvalidEmailValidPasswordTest[2](, )" classname="LoginTests" time="0.174"/>
+  <system-out><![CDATA[----CASE: Chrome
+----CASE: Chrome
+----CASE: Chrome
+----CASE: Chrome
+----CASE: Chrome
+----CASE: Chrome
+----CASE: Chrome
+]]></system-out>
+  <system-err><![CDATA[Aug 23, 2023 1:25:41 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:41 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+Aug 23, 2023 1:25:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+Aug 23, 2023 1:25:47 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:48 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:48 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+Aug 23, 2023 1:25:49 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+Aug 23, 2023 1:25:52 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:52 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+Aug 23, 2023 1:25:53 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:54 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+Aug 23, 2023 1:25:57 PM org.openqa.selenium.remote.service.DriverService$Builder getLogOutput
+INFO: Driver logs no longer sent to console by default; https://www.selenium.dev/documentation/webdriver/drivers/service/#setting-log-output
+Aug 23, 2023 1:25:57 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 116, so returning the closest version found: 114
+]]></system-err>
+</testsuite>
