@@ -27,6 +27,12 @@ ext {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestCucumber.xml"
+        suites "src/test/resources/Smoke.xml"
+    }
+}
+
+task testRegression(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/Regression.xml"
     }
 }
